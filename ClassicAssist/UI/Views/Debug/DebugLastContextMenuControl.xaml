@@ -1,0 +1,54 @@
+﻿<UserControl
+	x:Class="ClassicAssist.UI.Views.Debug.DebugLastContextMenuControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:ClassicAssist.Controls;assembly=ClassicAssist.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:debug="clr-namespace:ClassicAssist.UI.ViewModels.Debug"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:resources="clr-namespace:ClassicAssist.Shared.Resources;assembly=ClassicAssist.Shared"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	Background="{DynamicResource ThemeBackgroundBrush}"
+	mc:Ignorable="d">
+    <UserControl.DataContext>
+        <debug:DebugLastContextMenuViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Resources/DarkTheme.xaml" />
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <ListView Grid.Row="1" ItemsSource="{Binding Items}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+						Width="75"
+						DisplayMemberBinding="{Binding Cliloc}"
+						Header="{x:Static resources:Strings.Cliloc}" />
+                    <GridViewColumn
+						Width="75"
+						DisplayMemberBinding="{Binding Flag}"
+						Header="{x:Static resources:Strings.Property}" />
+                    <GridViewColumn
+						Width="75"
+						DisplayMemberBinding="{Binding Hue}"
+						Header="{x:Static resources:Strings.Color}" />
+                    <GridViewColumn
+						Width="75"
+						DisplayMemberBinding="{Binding Index}"
+						Header="Index" />
+                    <GridViewColumn
+						Width="175"
+						DisplayMemberBinding="{Binding Text}"
+						Header="Text" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
